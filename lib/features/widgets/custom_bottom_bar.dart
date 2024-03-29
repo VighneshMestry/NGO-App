@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ngo_app/features/home/screens/home_screen.dart';
+import 'package:ngo_app/features/ngo/screens/ngo_screen.dart';
 
 class CustomBottomNavigationBar extends ConsumerStatefulWidget {
   const CustomBottomNavigationBar({super.key});
@@ -23,7 +24,7 @@ class CustomBottomNavigationBarState
 
   static const screens = [
     HomeScreen(),
-    HomeScreen(),
+    NgoScreen(),
     HomeScreen(),
     HomeScreen(),
     HomeScreen(),
