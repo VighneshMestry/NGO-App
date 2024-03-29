@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ngo_app/features/auth/screens/login_screen.dart';
 import 'package:ngo_app/features/widgets/custom_bottom_bar.dart';
 import 'package:ngo_app/firebase_options.dart';
 
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'NGO App',
-      home: CustomBottomNavigationBar(),
+      home: LoginScreen(),
     );
   }
 }

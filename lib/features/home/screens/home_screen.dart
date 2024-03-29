@@ -50,59 +50,10 @@ class _HomeScreenState extends State<HomeScreen> {
             )
           ],
         ),
-        actions: [
+        actions: const [
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.bookmark_outline_rounded,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.notifications_none_outlined,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    showDialog(
-                        context: context,
-                        builder: (context) {
-                          return AlertDialog(
-                            title: const Text("Do you want to LogOut??",
-                                style: TextStyle(fontSize: 20)),
-                            iconColor: Colors.blue,
-                            actions: [
-                              TextButton(
-                                  onPressed: () {
-                                    // authProvider.userSignOut().then(
-                                    //       (value) => Navigator.push(
-                                    //         context,
-                                    //         MaterialPageRoute(
-                                    //           builder: (context) =>
-                                    //               const GetStarted(),
-                                    //         ),
-                                    //       ),
-                                    //     );
-                                  },
-                                  child: const Text(
-                                    "LogOut",
-                                    style: TextStyle(color: Colors.blue),
-                                  ))
-                            ],
-                          );
-                        });
-                  },
-                  icon: const Icon(
-                    Icons.exit_to_app,
-                  ),
-                ),
-              ],
-            ),
+            padding: EdgeInsets.all(10.0),
+            child: Icon(Icons.more_vert)
           )
         ],
       ),
