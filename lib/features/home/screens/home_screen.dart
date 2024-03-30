@@ -18,7 +18,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final user = ref.watch(userProvider);
-    bool isBarOpen = true;
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 80,
