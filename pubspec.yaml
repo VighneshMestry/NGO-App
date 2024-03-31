@@ -44,6 +44,9 @@ dependencies:
   google_sign_in: ^6.2.1
   cloud_firestore: ^4.15.8
   uuid: ^4.3.3
+  file_picker: ^8.0.0+1
+  dotted_border: ^2.1.0
+  firebase_storage: ^11.6.9
 
 dev_dependencies:
   flutter_test:

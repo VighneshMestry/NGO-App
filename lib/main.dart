@@ -44,7 +44,7 @@ class MyApp extends ConsumerWidget {
               return const MaterialApp(
                 debugShowCheckedModeBanner: false,
                 title: 'NGO App',
-                home: CustomBottomNavigationBar());
+                home: CustomBottomNavigationBar(currentPage: 0));
             } else {
               return const MaterialApp(
                 debugShowCheckedModeBanner: false,

@@ -37,7 +37,7 @@ class AuthController extends StateNotifier<bool> {
     _ref.read(userProvider.notifier).update((state) => user);
 
     Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) => const CustomBottomNavigationBar()),
+        MaterialPageRoute(builder: (context) => const CustomBottomNavigationBar(currentPage: 0)),
         (Route<dynamic> route) => false);
   }
 
