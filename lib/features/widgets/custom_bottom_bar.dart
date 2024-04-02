@@ -26,9 +26,16 @@ class CustomBottomNavigationBarState
     });
   }
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _page = widget.currentPage;
+  }
+
   static const screens = [
     HomeScreen(),
-    NgoScreen(),
+    NgoActivityScreen(),
     HomeScreen(),
     HomeScreen(),
     HomeScreen(),

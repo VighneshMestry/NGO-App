@@ -4,16 +4,16 @@ import 'package:ngo_app/core/constants/constants.dart';
 import 'package:ngo_app/features/auth/controller/auth_controller.dart';
 import 'package:ngo_app/features/ngo/controller/ngo_controller.dart';
 import 'package:ngo_app/features/ngo/screens/add_ngo_screen.dart';
-import 'package:ngo_app/features/widgets/custom_card.dart';
+import 'package:ngo_app/features/ngo/screens/ngo_screen.dart';
 
-class NgoScreen extends ConsumerStatefulWidget {
-  const NgoScreen({super.key});
+class NgoActivityScreen extends ConsumerStatefulWidget {
+  const NgoActivityScreen({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _NgoScreenState();
 }
 
-class _NgoScreenState extends ConsumerState<NgoScreen> {
+class _NgoScreenState extends ConsumerState<NgoActivityScreen> {
   TextEditingController _searchController = TextEditingController();
   List<int> ngoActivityCount = [];
   void getNgoActivityCount() async {
@@ -100,7 +100,7 @@ class _NgoScreenState extends ConsumerState<NgoScreen> {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: (){
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => CustomCard()));
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => NgoScreen(activity: Constants.ngoCategories[index])));
                   },
                   child: Container(
                       margin: const EdgeInsets.symmetric(horizontal: 10),

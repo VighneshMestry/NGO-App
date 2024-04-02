@@ -14,6 +14,10 @@ final ngoControllerProvider = StateNotifierProvider<NgoController, bool>(
   ),
 );
 
+final getNgoListByActivityProvider = StreamProvider.family((ref, String activity) {
+  return ref.watch(ngoControllerProvider.notifier).getNgoListByActivity(activity);
+});
+
 class NgoController extends StateNotifier<bool> {
   final NgoRepository _ngoRepository;
   final Ref _ref;
@@ -47,5 +51,9 @@ class NgoController extends StateNotifier<bool> {
 
   Future<String> getDownloadURL(String name) async {
     return await _ngoRepository.getPdfDownloadUrl(name);
+  }
+
+  Stream<List<NGO>> getNgoListByActivity(String activity) {
+    return _ngoRepository.getNgoListByActivity(activity);
   }
 }

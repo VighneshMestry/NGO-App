@@ -15,7 +15,8 @@ class NgoRepository {
       FirebaseFirestore.instance.collection('category');
 
   Future<int> getNgoActivityCount(String activity) async {
-    QuerySnapshot querySnapshot = await ngoCollection.where("activity", isEqualTo: activity).get();
+    QuerySnapshot querySnapshot =
+        await ngoCollection.where("activity", isEqualTo: activity).get();
     return querySnapshot.size;
   }
 
@@ -37,9 +38,11 @@ class NgoRepository {
         Reference storageReference =
             FirebaseStorage.instance.ref().child('coverImages/$name');
         UploadTask uploadTask = storageReference.putFile(coverImage);
-        print("11111111111111111111111111111111111111111111111111111111111111111");
+        print(
+            "11111111111111111111111111111111111111111111111111111111111111111");
         await uploadTask.whenComplete(() => print("File Uploaded"));
-        print("22222222222222222222222222222222222222222222222222222222222222222222");
+        print(
+            "22222222222222222222222222222222222222222222222222222222222222222222");
       } catch (e) {
         print('Error uploading image: $e');
         if (!context.mounted) return;
@@ -54,16 +57,22 @@ class NgoRepository {
   Future<String> getPdfDownloadUrl(String name) async {
     String downloadUrl = '';
     try {
-      
-        print("33333333333333333333333333333333333333333333333333333");
+      print("33333333333333333333333333333333333333333333333333333");
       Reference storageReference =
           FirebaseStorage.instance.ref().child('coverImages/$name');
       downloadUrl = await storageReference.getDownloadURL();
-      
-        print("444444444444444444444444444444444444444444444444444444444444");
+
+      print("444444444444444444444444444444444444444444444444444444444444");
     } catch (e) {
       print('Error getting download URL: $e');
     }
     return downloadUrl;
+  }
+
+  Stream<List<NGO>> getNgoListByActivity(String activity) {
+    return ngoCollection.where("activity", isEqualTo: activity).snapshots().map(
+        (event) => event.docs
+            .map((e) => NGO.fromMap(e.data() as Map<String, dynamic>))
+            .toList());
   }
 }
