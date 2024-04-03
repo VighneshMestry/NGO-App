@@ -23,13 +23,13 @@ class _CustomCardState extends ConsumerState<CustomCard> {
       margin: const EdgeInsets.only(top: 5, bottom: 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.grey.shade300),
+        border: Border.all(color: Colors.grey.shade400),
         color: Colors.white,
         boxShadow: [
           BoxShadow(
             color: Colors.grey.shade50,
-            spreadRadius: 2,
-            blurRadius: 3,
+            spreadRadius: 4,
+            blurRadius: 5,
           ),
         ],
       ),

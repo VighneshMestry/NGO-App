@@ -19,6 +19,54 @@ class Constants {
     "Youth Affairs",
   ];
 
+  static List<String> jobsCategories = [
+    "Accounts",
+    "Banks",
+    "Consultants",
+    "Designer",
+    "Marketing",
+    "Insurance",
+    "Pharma",
+    "Sales",
+    "Teaching",
+  ];
+
+  static List<String> newCategories = [
+    "Advocacy and Research",
+    "Animal Welfare",
+    "Children",
+    "Disaster Management",
+    "Education & Literacy",
+    "Human Rights",
+    "Labour & Employment",
+    "Sports",
+    "Youth Affairs",
+  ];
+
+  static List<String> eventsCategories = [
+    "Advocacy and Research",
+    "Animal Welfare",
+    "Children",
+    "Disaster Management",
+    "Education & Literacy",
+    "Human Rights",
+    "Labour & Employment",
+    "Sports",
+    "Youth Affairs",
+  ];
+
+    static List<String> eventsCategoriesCount = [
+    "2",
+    "0",
+    "0",
+    "1",
+    "0",
+    "0",
+    "1",
+    "0",
+    "1",
+  ];
+
   static const selectedNavBarColor = Colors.blue;
   static const unselectedNavBarColor = Colors.black;
   static const backgroundColor = Colors.white;

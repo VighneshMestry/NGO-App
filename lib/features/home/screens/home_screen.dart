@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ngo_app/features/auth/controller/auth_controller.dart';
 import 'package:ngo_app/features/home/widgets/carousel.dart';
+import 'package:ngo_app/features/home/widgets/custom_tile.dart';
 import 'package:searchbar_animation/const/dimensions.dart';
 import 'package:searchbar_animation/searchbar_animation.dart';
 
@@ -14,7 +15,7 @@ class HomeScreen extends ConsumerStatefulWidget {
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   final TextEditingController _searchController = TextEditingController();
-  
+
   @override
   Widget build(BuildContext context) {
     final user = ref.watch(userProvider);
@@ -113,12 +114,73 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
             const SizedBox(height: 10),
             const CarouselImages(),
-            // const SizedBox(height: 30),
-            // const FeaturedServices(),
-            // const SizedBox(height: 30),
-            // const CategoryDisplay(),
-            // const SizedBox(height: 30),
-            // const MostPopularServices(),
+            const SizedBox(height: 10),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Category",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500, fontSize: 18),
+                      ),
+                      // OutlinedButton(
+                      //   onPressed: () {
+                      //     Navigator.of(context).push(MaterialPageRoute(
+                      //                         builder: (context) =>
+                      //                             BottomBar(pageIndex: 1)));
+                      //   },
+                      //   style: OutlinedButton.styleFrom(side: BorderSide.none),
+                      //   child: const Text("View All", style: TextStyle(fontWeight: FontWeight.w800),),
+                      // ),
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      // Padding(
+                      //   padding: const EdgeInsets.all(10.0),
+                      //   child: Container(
+                      //     height: 100,
+                      //     width: 100,
+                      //     decoration: BoxDecoration(
+                      //       boxShadow: [
+                      //         BoxShadow(
+                      //           color: Colors.grey.shade200,
+                      //           blurRadius: 8,
+                      //         )
+                      //       ],
+                      //       borderRadius: BorderRadius.circular(10),
+                      //     ),
+                      //     child: Image.asset("assets/haircut.png", fit: BoxFit.cover,),
+                      //   ),
+                      // ),
+                      CategoryTile(
+                          icon: Icon(Icons.location_city_outlined),
+                          categoryName: "NGO"),
+                      CategoryTile(
+                          icon: Icon(Icons.work_outline), categoryName: "Jobs"),
+                      CategoryTile(
+                          icon: Icon(Icons.newspaper_outlined),
+                          categoryName: "News"),
+                    ],
+                  ),
+                  SizedBox(height: 30),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CategoryTile(
+                          icon: Icon(Icons.event_outlined),
+                          categoryName: "Events"),
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),

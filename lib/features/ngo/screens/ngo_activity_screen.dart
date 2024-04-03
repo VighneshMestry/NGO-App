@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ngo_app/core/constants/constants.dart';
@@ -5,6 +6,8 @@ import 'package:ngo_app/features/auth/controller/auth_controller.dart';
 import 'package:ngo_app/features/ngo/controller/ngo_controller.dart';
 import 'package:ngo_app/features/ngo/screens/add_ngo_screen.dart';
 import 'package:ngo_app/features/ngo/screens/ngo_screen.dart';
+import 'package:ngo_app/features/widgets/custom_card.dart';
+import 'package:ngo_app/models/ngo_model.dart';
 
 class NgoActivityScreen extends ConsumerStatefulWidget {
   const NgoActivityScreen({super.key});
@@ -14,7 +17,18 @@ class NgoActivityScreen extends ConsumerStatefulWidget {
 }
 
 class _NgoScreenState extends ConsumerState<NgoActivityScreen> {
-  TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
+  bool isSearching = false;
+  void isSearchingFunction() {
+    if (_searchController.text.isNotEmpty) {
+      isSearching = true;
+      setState(() {});
+    } else {
+      isSearching = false;
+      setState(() {});
+    }
+  }
+
   List<int> ngoActivityCount = [];
   void getNgoActivityCount() async {
     List<String> ngoActivity = Constants.ngoCategories;
@@ -79,59 +93,107 @@ class _NgoScreenState extends ConsumerState<NgoActivityScreen> {
                       child: TextFormField(
                         controller: _searchController,
                         decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: "Search",
-                            hintStyle: TextStyle(color: Colors.blue.shade900),
-                            suffixIcon: Icon(
-                              Icons.search,
-                              color: Colors.blue.shade900,
-                            )),
+                          border: InputBorder.none,
+                          hintText: "Search",
+                          hintStyle: TextStyle(color: Colors.blue.shade900),
+                          suffixIcon: Icon(
+                            Icons.search,
+                            color: Colors.blue.shade900,
+                          ),
+                        ),
+                        onChanged: (value) {
+                          print(_searchController.text);
+                          isSearchingFunction();
+                        },
                       ),
                     )
                   ],
                 ),
               ),
             ),
-            ListView.builder(
-              itemCount: Constants.ngoCategories.length,
-              shrinkWrap: true,
-              scrollDirection: Axis.vertical,
-              physics: const NeverScrollableScrollPhysics(),
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: (){
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => NgoScreen(activity: Constants.ngoCategories[index])));
-                  },
-                  child: Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 10),
-                      padding: const EdgeInsets.only(
-                          top: 25, bottom: 10, left: 20, right: 20),
-                      height: 80,
-                      decoration: BoxDecoration(
-                          border: Border(
-                              bottom: BorderSide(color: Colors.grey.shade400))),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            Constants.ngoCategories[index],
-                            style: const TextStyle(fontSize: 22),
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          ngoActivityCount.isEmpty
-                              ? SizedBox(
-                                  height: 20,
-                                  width: 20,
-                                  child: CircularProgressIndicator(
-                                      color: Colors.blue.shade400,
-                                      strokeWidth: 3))
-                              : Text("(${ngoActivityCount[index].toString()})",
-                                  style: const TextStyle(fontSize: 22)),
-                        ],
-                      )),
-                );
-              },
-            ),
+            isSearching
+                ? StreamBuilder(
+                stream: FirebaseFirestore.instance
+                    .collection("ngo")
+                    .snapshots(),
+                builder: (context, snapshots) {
+                  return (snapshots.connectionState == ConnectionState.waiting)
+                      ? const Center(
+                          child: CircularProgressIndicator(),
+                        )
+                      : ListView.builder(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemBuilder: (context, index) {
+                            var data = snapshots.data!.docs[index].data();
+                            NGO ngo = NGO.fromMap(data);
+
+                            // if (query.isEmpty) {
+                            //   return Padding(
+                            //     padding: const EdgeInsets.only(bottom: 15),
+                            //     child: DocumentCard(document: document),
+                            //   );
+                            // }
+                            if (ngo.ngoName
+                                .toString()
+                                .toLowerCase()
+                                .contains(_searchController.text.toLowerCase())) {
+                              return Padding(
+                                padding: const EdgeInsets.symmetric(horizontal : 8),
+                                child: CustomCard(ngo: ngo),
+                              );
+                            }
+                            return Container();
+                          },
+                          itemCount: snapshots.data!.docs.length,
+                        );
+                },
+              )
+                : ListView.builder(
+                    itemCount: Constants.ngoCategories.length,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => NgoScreen(
+                                  activity: Constants.ngoCategories[index])));
+                        },
+                        child: Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 10),
+                            padding: const EdgeInsets.only(
+                                top: 25, bottom: 10, left: 20, right: 20),
+                            height: 80,
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        color: Colors.grey.shade400))),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  Constants.ngoCategories[index],
+                                  style: const TextStyle(fontSize: 22),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                ngoActivityCount.isEmpty
+                                    ? SizedBox(
+                                        height: 20,
+                                        width: 20,
+                                        child: CircularProgressIndicator(
+                                            color: Colors.blue.shade400,
+                                            strokeWidth: 3))
+                                    : Text(
+                                        "(${ngoActivityCount[index].toString()})",
+                                        style: const TextStyle(fontSize: 22)),
+                              ],
+                            )),
+                      );
+                    },
+                  ),
           ],
         ),
       ),
