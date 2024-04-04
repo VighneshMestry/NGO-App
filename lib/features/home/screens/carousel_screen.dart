@@ -69,7 +69,7 @@ class _CarouselScreenState extends ConsumerState<CarouselScreen> {
                         carouselController.previousPage();
                       },
                       child: Text("BACK",
-                          style: TextStyle(color: Colors.indigo.shade900))),
+                          style: TextStyle(color: Colors.blue.shade900))),
                   DotsIndicator(
                     decorator: DotsDecorator(
                         color: Colors.grey,
@@ -93,7 +93,7 @@ class _CarouselScreenState extends ConsumerState<CarouselScreen> {
                       carouselController.nextPage();
                     },
                     child: Text("NEXT",
-                        style: TextStyle(color: Colors.indigo.shade900)),
+                        style: TextStyle(color: Colors.blue.shade900)),
                   ),
                 ],
               ),
