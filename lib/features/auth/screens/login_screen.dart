@@ -11,7 +11,6 @@ class LoginScreen extends ConsumerStatefulWidget {
 }
 
 class _LoginScreenState extends ConsumerState<LoginScreen> {
-
   @override
   void initState() {
     super.initState();
@@ -19,9 +18,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
   void signIn(WidgetRef ref, bool isNgo) {
     ref.read(authControllerProvider.notifier).signInWithGoogle(context, isNgo);
-    setState(() {
-      print("done");
-    });
+    setState(() {});
   }
 
   Stream<UserModel> getUserData(String uid) {
@@ -72,7 +69,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             children: [
               Padding(
                 padding: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height/4.5,
+                  top: MediaQuery.of(context).size.height / 4.5,
                   left: 16,
                 ),
                 child: RichText(
@@ -103,7 +100,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               //     height: 250,
               //   ),
               // ),
-              SizedBox(height: MediaQuery.of(context).size.height/4),
+              SizedBox(height: MediaQuery.of(context).size.height / 4),
               Padding(
                 padding: const EdgeInsets.only(
                     top: 8, left: 16, bottom: 8, right: 16),
@@ -136,15 +133,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       ),
                     ),
                     const SizedBox(height: 20),
-                    GestureDetector(
-                      onTap: () {
-                        // Navigator.pushNamed(context, SignupScreen.routeName);
-                        // print('done');
-                      },
-                      child: const Text(
-                        "Don't have an account? Click above",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
+                    const Text(
+                      "Don't have an account? Click above",
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),

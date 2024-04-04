@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ngo_app/features/auth/controller/auth_controller.dart';
+import 'package:ngo_app/features/auth/screens/login_screen.dart';
+import 'package:ngo_app/features/home/screens/carousel_screen.dart';
 import 'package:ngo_app/features/home/widgets/carousel.dart';
 import 'package:ngo_app/features/home/widgets/custom_tile.dart';
 import 'package:searchbar_animation/const/dimensions.dart';
@@ -15,6 +17,10 @@ class HomeScreen extends ConsumerStatefulWidget {
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   final TextEditingController _searchController = TextEditingController();
+    void logOut() {
+    ref.read(authControllerProvider.notifier).logOut();
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +38,16 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       height: 40,
                       width: 40,
                     )
-                  : Image.network(
-                      user.profilePic,
-                      height: 40,
-                      width: 40,
-                    ),
+                  : GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CarouselScreen()));
+                    },
+                    child: Image.network(
+                        user.profilePic,
+                        height: 40,
+                        width: 40,
+                      ),
+                  ),
             ),
             const SizedBox(width: 16),
             Column(
@@ -65,8 +76,35 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.more_vert),
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: const Text('LogOut'),
+                        content: const Text('Are you sure you want to logout?'),
+                        actions: <Widget>[
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: const Text('Cancel'),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pushAndRemoveUntil(
+                                  MaterialPageRoute(
+                                      builder: (context) => const LoginScreen()),
+                                  (Route<dynamic> route) => false);
+                              logOut();
+                            },
+                            child: const Text('LogOut'),
+                          ),
+                        ],
+                      );
+                    });
+              },
+              icon: const Icon(Icons.logout),
             ),
           )
         ],

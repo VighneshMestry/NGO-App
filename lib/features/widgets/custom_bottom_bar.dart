@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ngo_app/features/about/about_us_screen.dart';
 import 'package:ngo_app/features/events/events.dart';
 
 import 'package:ngo_app/features/home/screens/home_screen.dart';
-import 'package:ngo_app/features/jobs/jobs_screen.dart';
 import 'package:ngo_app/features/news/news_screen.dart';
 import 'package:ngo_app/features/ngo/screens/ngo_activity_screen.dart';
 
@@ -31,7 +31,6 @@ class CustomBottomNavigationBarState
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _page = widget.currentPage;
   }
@@ -39,9 +38,9 @@ class CustomBottomNavigationBarState
   static const screens = [
     HomeScreen(),
     NgoActivityScreen(),
-    JobsScreen(),
     NewsScreen(),
     EventScreen(),
+    AboutUsScreen(),
   ];
 
   @override
@@ -63,16 +62,16 @@ class CustomBottomNavigationBarState
             label: 'NGO',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.work_outline),
-            label: 'Jobs',
-          ),
-          BottomNavigationBarItem(
             icon: Icon(Icons.newspaper_outlined),
             label: 'News',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.event_outlined),
             label: 'Events',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.info),
+            label: 'About Us',
           ),
         ],
         onTap: onPageChange,
