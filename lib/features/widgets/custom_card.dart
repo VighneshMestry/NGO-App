@@ -1,9 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ngo_app/features/widgets/more_info_card.dart';
 
-import 'package:ngo_app/models/ngo_model.dart';
+import '../../models/ngo_model.dart';
+import 'more_info_card.dart';
 
 class CustomCard extends ConsumerStatefulWidget {
   final NGO ngo;

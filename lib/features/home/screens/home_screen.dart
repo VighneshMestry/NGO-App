@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ngo_app/features/auth/controller/auth_controller.dart';
-import 'package:ngo_app/features/auth/screens/login_screen.dart';
-import 'package:ngo_app/features/home/screens/carousel_screen.dart';
-import 'package:ngo_app/features/home/widgets/carousel.dart';
-import 'package:ngo_app/features/home/widgets/custom_tile.dart';
-import 'package:searchbar_animation/const/dimensions.dart';
-import 'package:searchbar_animation/searchbar_animation.dart';
+import '../../auth/controller/auth_controller.dart';
+import '../../auth/screens/login_screen.dart';
+import '../widgets/carousel.dart';
+import '../widgets/custom_tile.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -16,8 +13,7 @@ class HomeScreen extends ConsumerStatefulWidget {
 }
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
-  final TextEditingController _searchController = TextEditingController();
-    void logOut() {
+  void logOut() {
     ref.read(authControllerProvider.notifier).logOut();
     setState(() {});
   }
@@ -39,15 +35,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       width: 40,
                     )
                   : GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CarouselScreen()));
-                    },
-                    child: Image.network(
+                      onTap: () {
+                        // Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CarouselScreen()));
+                      },
+                      child: Image.network(
                         user.profilePic,
                         height: 40,
                         width: 40,
                       ),
-                  ),
+                    ),
             ),
             const SizedBox(width: 16),
             Column(
@@ -94,7 +90,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             onPressed: () {
                               Navigator.of(context).pushAndRemoveUntil(
                                   MaterialPageRoute(
-                                      builder: (context) => const LoginScreen()),
+                                      builder: (context) =>
+                                          const LoginScreen()),
                                   (Route<dynamic> route) => false);
                               logOut();
                             },
@@ -113,41 +110,43 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         scrollDirection: Axis.vertical,
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(
-                        color: const Color.fromARGB(255, 227, 218, 218))),
-                height: 70,
-                width: MediaQuery.of(context).size.width,
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8),
-                      child: SearchBarAnimation(
-                        textEditingController: _searchController,
-                        isOriginalAnimation: true,
-                        trailingWidget: const Icon(Icons.search),
-                        secondaryButtonWidget: const Icon(Icons.close),
-                        buttonWidget: const Icon(
-                          Icons.search,
-                          color: Colors.black,
-                        ),
-                        searchBoxWidth: MediaQuery.of(context).size.width - 40,
-                        durationInMilliSeconds: Dimensions.t700,
-                        // isSearchBoxOnRightSide: true,
-                        onChanged: (value) {
-                          setState(() {
-                            // searchString = value;
-                          });
-                          // filterSearchResults(value);
-                        },
-                      ),
-                    ),
+            Container(
+              height: 40,
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Color.fromARGB(255, 114, 226, 221),
+                    Color.fromARGB(255, 162, 236, 233),
+                  ],
+                  stops: [
+                    0.5,
+                    1.0,
                   ],
                 ),
+                // color: Colors.blue.shade900
+              ),
+              padding: const EdgeInsets.only(left: 10),
+              child: const Row(
+                children: [
+                  Icon(
+                    Icons.location_on_outlined,
+                    color: Colors.black,
+                    size: 20,
+                  ),
+                  // TO USE THE TEXTOVERFLOW PROPERTY EXPANDED WIDGET IS RECOMMENDED
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 5, right: 5),
+                      child: Text(
+                        'F-143, Prem Nagar, Kopri Colony, Thane, Maharashtra, 400603',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(height: 10),
@@ -165,55 +164,28 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         style: TextStyle(
                             fontWeight: FontWeight.w500, fontSize: 18),
                       ),
-                      // OutlinedButton(
-                      //   onPressed: () {
-                      //     Navigator.of(context).push(MaterialPageRoute(
-                      //                         builder: (context) =>
-                      //                             BottomBar(pageIndex: 1)));
-                      //   },
-                      //   style: OutlinedButton.styleFrom(side: BorderSide.none),
-                      //   child: const Text("View All", style: TextStyle(fontWeight: FontWeight.w800),),
-                      // ),
                     ],
                   ),
                   SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      // Padding(
-                      //   padding: const EdgeInsets.all(10.0),
-                      //   child: Container(
-                      //     height: 100,
-                      //     width: 100,
-                      //     decoration: BoxDecoration(
-                      //       boxShadow: [
-                      //         BoxShadow(
-                      //           color: Colors.grey.shade200,
-                      //           blurRadius: 8,
-                      //         )
-                      //       ],
-                      //       borderRadius: BorderRadius.circular(10),
-                      //     ),
-                      //     child: Image.asset("assets/haircut.png", fit: BoxFit.cover,),
-                      //   ),
-                      // ),
                       CategoryTile(
                           icon: Icon(Icons.location_city_outlined),
                           categoryName: "NGO"),
                       CategoryTile(
-                          icon: Icon(Icons.work_outline), categoryName: "Jobs"),
-                      CategoryTile(
                           icon: Icon(Icons.newspaper_outlined),
                           categoryName: "News"),
+                      CategoryTile(
+                          icon: Icon(Icons.event_outlined),
+                          categoryName: "Events"),
                     ],
                   ),
-                  SizedBox(height: 30),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       CategoryTile(
-                          icon: Icon(Icons.event_outlined),
-                          categoryName: "Events"),
+                          icon: Icon(Icons.info), categoryName: "About Us"),
                     ],
                   ),
                 ],

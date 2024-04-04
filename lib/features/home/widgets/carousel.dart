@@ -1,7 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:ngo_app/core/constants/constants.dart';
+
+import '../../../core/constants/constants.dart';
 
 class CarouselImages extends StatefulWidget {
   const CarouselImages({super.key});
@@ -36,8 +37,8 @@ class _CarouselImagesState extends State<CarouselImages> {
             },
           ).toList(),
           options: CarouselOptions(
-            // autoPlay: true,
-            autoPlayInterval: const Duration(seconds: 5),
+            autoPlay: true,
+            autoPlayInterval: const Duration(seconds: 3),
             onPageChanged: (index, reason) {
               setState(() {
                 currentIndex = index;

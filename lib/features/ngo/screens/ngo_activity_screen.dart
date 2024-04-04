@@ -1,13 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ngo_app/core/constants/constants.dart';
-import 'package:ngo_app/features/auth/controller/auth_controller.dart';
-import 'package:ngo_app/features/ngo/controller/ngo_controller.dart';
-import 'package:ngo_app/features/ngo/screens/add_ngo_screen.dart';
-import 'package:ngo_app/features/ngo/screens/ngo_screen.dart';
-import 'package:ngo_app/features/widgets/custom_card.dart';
-import 'package:ngo_app/models/ngo_model.dart';
+
+import '../../../core/constants/constants.dart';
+import '../../../models/ngo_model.dart';
+import '../../auth/controller/auth_controller.dart';
+import '../../widgets/custom_card.dart';
+import '../controller/ngo_controller.dart';
+import 'add_ngo_screen.dart';
+import 'ngo_screen.dart';
 
 class NgoActivityScreen extends ConsumerStatefulWidget {
   const NgoActivityScreen({super.key});

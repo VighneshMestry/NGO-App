@@ -4,7 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ngo_app/models/ngo_model.dart';
+
+import '../../../models/ngo_model.dart';
 
 final ngoRepositoryProvider = Provider((ref) => NgoRepository());
 

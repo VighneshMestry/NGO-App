@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:ngo_app/features/widgets/custom_bottom_bar.dart';
+
+import '../../widgets/custom_bottom_bar.dart';
 
 class CategoryTile extends StatelessWidget {
   final Icon icon;

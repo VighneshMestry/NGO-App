@@ -104,7 +104,7 @@ class _NewsScreenState extends ConsumerState<NewsScreen> {
                                   overflow: TextOverflow.ellipsis,
                                 ),
                                 Text(
-                                        "(${Constants.eventsCategoriesCount[index].toString()})",
+                                        "(${Constants.ngoCategories[index].toString()})",
                                         style: const TextStyle(fontSize: 22)),
                               ],
                             )),

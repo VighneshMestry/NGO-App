@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ngo_app/features/auth/controller/auth_controller.dart';
-import 'package:ngo_app/models/user_model.dart';
+import '../../../models/user_model.dart';
+import '../controller/auth_controller.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
@@ -28,18 +28,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   void logOut() {
     ref.read(authControllerProvider.notifier).logOut();
     setState(() {});
-    ///// _auth.signOut();
   }
-
-  // void signInWithGoogle() async {
-  //   try {
-  //     GoogleAuthProvider _googleAuthProvider = GoogleAuthProvider();
-  //     await _auth.signInWithProvider(_googleAuthProvider);
-  //   } catch (e) {
-  //     throw e.toString();
-  //   }
-  // }
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -2,8 +2,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ngo_app/core/constants/constants.dart';
-import 'package:ngo_app/features/widgets/custom_bottom_bar.dart';
+
+import '../../../core/constants/constants.dart';
+import '../../widgets/custom_bottom_bar.dart';
 
 class CarouselScreen extends ConsumerStatefulWidget {
   const CarouselScreen({super.key});

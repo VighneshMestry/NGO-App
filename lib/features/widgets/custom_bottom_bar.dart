@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ngo_app/features/about/about_us_screen.dart';
-import 'package:ngo_app/features/events/events.dart';
 
-import 'package:ngo_app/features/home/screens/home_screen.dart';
-import 'package:ngo_app/features/news/news_screen.dart';
-import 'package:ngo_app/features/ngo/screens/ngo_activity_screen.dart';
+import '../about/about_us_screen.dart';
+import '../events/events.dart';
+import '../home/screens/home_screen.dart';
+import '../news/news_screen.dart';
+import '../ngo/screens/ngo_activity_screen.dart';
 
 class CustomBottomNavigationBar extends ConsumerStatefulWidget {
   final int currentPage;

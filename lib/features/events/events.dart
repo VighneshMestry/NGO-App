@@ -75,7 +75,7 @@ class _EventScreenState extends ConsumerState<EventScreen> {
               ),
             ),
             ListView.builder(
-                    itemCount: Constants.eventsCategories.length,
+                    itemCount: Constants.ngoCategories.length,
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
                     physics: const NeverScrollableScrollPhysics(),
@@ -99,12 +99,12 @@ class _EventScreenState extends ConsumerState<EventScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  Constants.eventsCategories[index],
+                                  Constants.ngoCategories[index],
                                   style: const TextStyle(fontSize: 22),
                                   overflow: TextOverflow.ellipsis,
                                 ),
                                 Text(
-                                        "(${Constants.eventsCategoriesCount[index].toString()})",
+                                        "(${Constants.ngoCategories[index].toString()})",
                                         style: const TextStyle(fontSize: 22)),
                               ],
                             )),

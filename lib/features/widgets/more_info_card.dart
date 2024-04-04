@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ngo_app/models/ngo_model.dart';
+
+import '../../models/ngo_model.dart';
 
 class MoreInfoCard extends ConsumerWidget {
   final NGO ngo;

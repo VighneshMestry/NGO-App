@@ -2,11 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ngo_app/features/auth/controller/auth_controller.dart';
-import 'package:ngo_app/features/auth/screens/login_screen.dart';
-import 'package:ngo_app/features/widgets/custom_bottom_bar.dart';
-import 'package:ngo_app/firebase_options.dart';
-import 'package:ngo_app/models/user_model.dart';
+
+import 'features/auth/controller/auth_controller.dart';
+import 'features/auth/screens/login_screen.dart';
+import 'features/widgets/custom_bottom_bar.dart';
+import 'firebase_options.dart';
+import 'models/user_model.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
