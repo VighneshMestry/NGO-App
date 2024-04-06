@@ -16,25 +16,19 @@ class Constants {
 
   static List<String> ngoCategories = [
     "Advocacy and Research",
-    "Animal Welfare",
     "Children",
-    "Disaster Management",
     "Education & Literacy",
     "Human Rights",
     "Labour & Employment",
-    "Sports",
     "Youth Affairs",
   ];
 
   static List<String> newCategories = [
     "Advocacy and Research",
-    "Animal Welfare",
     "Children",
-    "Disaster Management",
     "Education & Literacy",
     "Human Rights",
     "Labour & Employment",
-    "Sports",
     "Youth Affairs",
   ];
 

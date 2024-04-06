@@ -67,9 +67,14 @@ class _CarouselScreenState extends ConsumerState<CarouselScreen> {
                 children: [
                   TextButton(
                       onPressed: () {
-                        carouselController.previousPage();
+                        Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const CustomBottomNavigationBar(
+                                        currentPage: 0)),
+                            (Route<dynamic> route) => false);
                       },
-                      child: Text("BACK",
+                      child: Text("SKIP",
                           style: TextStyle(color: Colors.blue.shade900))),
                   DotsIndicator(
                     decorator: DotsDecorator(

@@ -31,9 +31,9 @@ class AuthController extends StateNotifier<bool> {
 
   Stream<User?> get authStateChange => _authRepository.authStateChange;
 
-  void signInWithGoogle(BuildContext context, bool isNgo) async {
+  void signInWithGoogle(BuildContext context, bool isStaff) async {
     state = true;
-    final user = await _authRepository.signInWithGoogle(isNgo);
+    final user = await _authRepository.signInWithGoogle(isStaff);
     state = false;
     _ref.read(userProvider.notifier).update((state) => user);
 

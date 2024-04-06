@@ -30,7 +30,7 @@ class AuthRepository {
 
   Stream<User?> get authStateChange => _auth.authStateChanges();
 
-  Future<UserModel> signInWithGoogle(bool isNgo) async {
+  Future<UserModel> signInWithGoogle(bool isStaff) async {
     try {
       UserCredential userCredential;
       GoogleSignIn _googleSignIn = GoogleSignIn();
@@ -52,7 +52,7 @@ class AuthRepository {
           name: userCredential.user!.displayName ?? "No Name",
           profilePic: userCredential.user!.photoURL!,
           uid: userCredential.user!.uid,
-          isNgo: isNgo
+          isStaff: isStaff
         );
         await FirebaseFirestore.instance
             .collection("users")

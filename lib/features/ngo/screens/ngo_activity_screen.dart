@@ -198,7 +198,7 @@ class _NgoScreenState extends ConsumerState<NgoActivityScreen> {
           ],
         ),
       ),
-      floatingActionButton: !user.isNgo
+      floatingActionButton: !user.isStaff
           ? const SizedBox()
           : Container(
               padding: const EdgeInsets.all(5.0),

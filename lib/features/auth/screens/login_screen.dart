@@ -16,8 +16,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     super.initState();
   }
 
-  void signIn(WidgetRef ref, bool isNgo) {
-    ref.read(authControllerProvider.notifier).signInWithGoogle(context, isNgo);
+  void signIn(WidgetRef ref, bool isStaff) {
+    ref.read(authControllerProvider.notifier).signInWithGoogle(context, isStaff);
     setState(() {});
   }
 
@@ -29,7 +29,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     ref.read(authControllerProvider.notifier).logOut();
     setState(() {});
   }
-  
+
+  bool isStaff = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,10 +99,61 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 child: Column(
                   children: [
                     Padding(
+                      padding: EdgeInsets.only(
+                          left: MediaQuery.of(context).size.width / 11),
+                      child: CheckboxListTile(
+                        title: const Text("Are you a Staff member"),
+                        value: isStaff,
+                        onChanged: (newValue) {
+                          setState(() {
+                            isStaff = newValue!;
+                          });
+                        },
+                        controlAffinity: ListTileControlAffinity
+                            .leading, //  <-- leading Checkbox
+                      ),
+                    ),
+                    Padding(
                       padding: const EdgeInsets.all(18.0),
                       child: ElevatedButton.icon(
                         onPressed: () {
-                          signIn(ref, true);
+                          !isStaff
+                              ? showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: const Text('Basic dialog title'),
+                                      content: const Text(
+                                          "You will be logging in as a civil user"),
+                                      actions: [
+                                        TextButton(
+                                          style: TextButton.styleFrom(
+                                            textStyle: Theme.of(context)
+                                                .textTheme
+                                                .labelLarge,
+                                          ),
+                                          child: const Text('Back'),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                        TextButton(
+                                          style: TextButton.styleFrom(
+                                            textStyle: Theme.of(context)
+                                                .textTheme
+                                                .labelLarge,
+                                          ),
+                                          child: const Text('Okay'),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                            signIn(ref, isStaff);
+                                          },
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                )
+                              : signIn(ref, isStaff);
                         },
                         icon: Image.asset(
                           "assets/google.png",

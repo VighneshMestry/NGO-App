@@ -1,12 +1,12 @@
 class UserModel {
   final String name;
   final String uid;
-  final bool isNgo;
+  final bool isStaff;
   final String profilePic;
   UserModel({
     required this.name,
     required this.uid,
-    required this.isNgo,
+    required this.isStaff,
     required this.profilePic,
   });
 
@@ -14,13 +14,13 @@ class UserModel {
   UserModel copyWith({
     String? name,
     String? uid,
-    bool? isNgo,
+    bool? isStaff,
     String? profilePic,
   }) {
     return UserModel(
       name: name ?? this.name,
       uid: uid ?? this.uid,
-      isNgo: isNgo ?? this.isNgo,
+      isStaff: isStaff ?? this.isStaff,
       profilePic: profilePic ?? this.profilePic,
     );
   }
@@ -29,7 +29,7 @@ class UserModel {
     return <String, dynamic>{
       'name': name,
       'uid': uid,
-      'isNgo': isNgo,
+      'isStaff': isStaff,
       'profilePic': profilePic,
     };
   }
@@ -38,7 +38,7 @@ class UserModel {
     return UserModel(
       name: map['name'] as String,
       uid: map['uid'] as String,
-      isNgo: map['isNgo'] as bool,
+      isStaff: map['isStaff'] as bool,
       profilePic: map['profilePic'] as String,
     );
   }
