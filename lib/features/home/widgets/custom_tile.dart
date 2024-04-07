@@ -6,17 +6,19 @@ import '../../widgets/custom_bottom_bar.dart';
 class CategoryTile extends StatelessWidget {
   final Icon icon;
   final String categoryName;
+  final int currentPage;
   const CategoryTile({
     Key? key,
     required this.icon,
     required this.categoryName,
+    required this.currentPage,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CustomBottomNavigationBar(currentPage: 1)
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => CustomBottomNavigationBar(currentPage: currentPage)
         )
         );
       },

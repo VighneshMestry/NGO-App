@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../about/about_us_screen.dart';
-import '../events/screens/events.dart';
+import '../events/screens/events_activity_screen.dart';
 import '../home/screens/home_screen.dart';
 import '../news/screens/news_activity_screen.dart';
 import '../ngo/screens/ngo_activity_screen.dart';
@@ -39,7 +39,7 @@ class CustomBottomNavigationBarState
     HomeScreen(),
     NgoActivityScreen(),
     NewsActivityScreen(),
-    EventScreen(),
+    EventActivityScreen(),
     AboutUsScreen(),
   ];
 

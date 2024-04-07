@@ -172,20 +172,25 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     children: [
                       CategoryTile(
                           icon: Icon(Icons.location_city_outlined),
-                          categoryName: "NGO"),
+                          categoryName: "NGO",
+                          currentPage: 1),
                       CategoryTile(
                           icon: Icon(Icons.newspaper_outlined),
-                          categoryName: "News"),
+                          categoryName: "News",
+                          currentPage: 2),
                       CategoryTile(
                           icon: Icon(Icons.event_outlined),
-                          categoryName: "Events"),
+                          categoryName: "Events",
+                          currentPage: 3),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       CategoryTile(
-                          icon: Icon(Icons.info), categoryName: "About Us"),
+                          icon: Icon(Icons.info),
+                          categoryName: "About Us",
+                          currentPage: 4),
                     ],
                   ),
                 ],

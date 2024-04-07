@@ -32,6 +32,15 @@ class Constants {
     "Youth Affairs",
   ];
 
+    static List<String> eventsCategories = [
+    "Advocacy and Research",
+    "Children",
+    "Education & Literacy",
+    "Human Rights",
+    "Labour & Employment",
+    "Youth Affairs",
+  ];
+
   static const selectedNavBarColor = Colors.blue;
   static const unselectedNavBarColor = Colors.black;
   static const backgroundColor = Colors.white;
