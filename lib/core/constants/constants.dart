@@ -23,7 +23,7 @@ class Constants {
     "Youth Affairs",
   ];
 
-  static List<String> newCategories = [
+  static List<String> newsCategories = [
     "Advocacy and Research",
     "Children",
     "Education & Literacy",

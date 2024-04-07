@@ -12,8 +12,6 @@ final ngoRepositoryProvider = Provider((ref) => NgoRepository());
 class NgoRepository {
   CollectionReference get ngoCollection =>
       FirebaseFirestore.instance.collection('ngo');
-  CollectionReference get category =>
-      FirebaseFirestore.instance.collection('category');
 
   Future<int> getNgoActivityCount(String activity) async {
     QuerySnapshot querySnapshot =

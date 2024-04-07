@@ -1,22 +1,21 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ngo_app/features/news/controller/news_controller.dart';
+import 'package:ngo_app/features/news/widgets/news_custom_card.dart';
 
-import '../controller/ngo_controller.dart';
-import '../widgets/ngo_custom_card.dart';
-
-class NgoScreen extends ConsumerStatefulWidget {
+class NewsScreen extends ConsumerStatefulWidget {
   final String activity;
-  const NgoScreen({
+  const NewsScreen({
     super.key,
     required this.activity,
   });
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _NgoScreenState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _NewsScreenState();
 }
 
-class _NgoScreenState extends ConsumerState<NgoScreen> {
+class _NewsScreenState extends ConsumerState<NewsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,22 +23,22 @@ class _NgoScreenState extends ConsumerState<NgoScreen> {
         title: Text(widget.activity),
         centerTitle: true,
       ),
-      body: ref.watch(getNgoListByActivityProvider(widget.activity)).when(
-            data: (ngoListByActivity) {
+      body: ref.watch(getNewsListByActivityProvider(widget.activity)).when(
+            data: (newsListByActivity) {
               return ListView.builder(
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
-                itemCount: ngoListByActivity.length,
+                itemCount: newsListByActivity.length,
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: NgoCustomCard(ngo: ngoListByActivity[index]),
+                    child: NewsCustomCard(news: newsListByActivity[index]),
                   );
                 },
               );
             },
             error: (error, stackTrace) => Text(error.toString()),
-            loading: () => const CircularProgressIndicator(),
+            loading: () => const Center(child: CircularProgressIndicator()),
           ),
     );
   }

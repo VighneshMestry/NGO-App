@@ -1,22 +1,22 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ngo_app/features/news/widgets/news_more_info_card.dart';
 
-import '../../models/ngo_model.dart';
-import 'more_info_card.dart';
+import 'package:ngo_app/models/news_model.dart';
 
-class CustomCard extends ConsumerStatefulWidget {
-  final NGO ngo;
-  const CustomCard({
-    super.key,
-    required this.ngo,
+class NewsCustomCard extends ConsumerStatefulWidget {
+  final NewsModel news;
+  const NewsCustomCard({super.key, 
+    required this.news,
   });
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _CustomCardState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _NewsCustomCardState();
 }
 
-class _CustomCardState extends ConsumerState<CustomCard> {
+class _NewsCustomCardState extends ConsumerState<NewsCustomCard> {
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -38,7 +38,7 @@ class _CustomCardState extends ConsumerState<CustomCard> {
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: Image.network(
-              widget.ngo.coverImage,
+              widget.news.coverImage,
               fit: BoxFit.cover,
               width: double.infinity,
               height: 180,
@@ -52,16 +52,13 @@ class _CustomCardState extends ConsumerState<CustomCard> {
               children: [
                 Row(
                   children: [
-                    CircleAvatar(
-                      radius: 24,
-                      backgroundColor: Colors.white,
-                      child: Image.asset("assets/ngoLogoCropped.jpeg"),
-                    ),
+                    const SizedBox(width: 5),
+                    const Icon(Icons.newspaper),
                     const SizedBox(width: 5),
                     SizedBox(
-                      width: MediaQuery.of(context).size.width / 1.4,
+                      width: MediaQuery.of(context).size.width / 1.3,
                       child: Text(
-                        widget.ngo.ngoName,
+                        widget.news.headLine,
                         style: const TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.w700,
@@ -76,11 +73,11 @@ class _CustomCardState extends ConsumerState<CustomCard> {
                 Row(
                   children: [
                     const SizedBox(width: 5),
-                    const Icon(Icons.location_pin),
+                    const Icon(Icons.textsms_outlined),
                     const SizedBox(width: 14),
                     SizedBox(
                       width: MediaQuery.of(context).size.width / 1.3,
-                      child: Text(widget.ngo.address),
+                      child: Text(widget.news.news),
                     ),
                   ],
                 ),
@@ -92,7 +89,7 @@ class _CustomCardState extends ConsumerState<CustomCard> {
                     const SizedBox(width: 14),
                     SizedBox(
                       width: MediaQuery.of(context).size.width / 1.3,
-                      child: Text(widget.ngo.coordinator,
+                      child: Text(widget.news.journalist,
                           style: const TextStyle(fontWeight: FontWeight.bold)),
                     ),
                   ],
@@ -106,7 +103,7 @@ class _CustomCardState extends ConsumerState<CustomCard> {
                     TextButton(
                         onPressed: () {
                           Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) => MoreInfoCard(ngo: widget.ngo))
+                            MaterialPageRoute(builder: (context) => NewsMoreInfoCard(news: widget.news))
                           );
                         },
                         child: Text(

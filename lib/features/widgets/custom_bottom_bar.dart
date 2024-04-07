@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../about/about_us_screen.dart';
-import '../events/events.dart';
+import '../events/screens/events.dart';
 import '../home/screens/home_screen.dart';
-import '../news/news_screen.dart';
+import '../news/screens/news_activity_screen.dart';
 import '../ngo/screens/ngo_activity_screen.dart';
 
 class CustomBottomNavigationBar extends ConsumerStatefulWidget {
@@ -38,7 +38,7 @@ class CustomBottomNavigationBarState
   static const screens = [
     HomeScreen(),
     NgoActivityScreen(),
-    NewsScreen(),
+    NewsActivityScreen(),
     EventScreen(),
     AboutUsScreen(),
   ];

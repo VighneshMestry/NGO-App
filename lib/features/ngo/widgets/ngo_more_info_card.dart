@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../models/ngo_model.dart';
+import '../../../models/ngo_model.dart';
 
-class MoreInfoCard extends ConsumerWidget {
+
+class NgoMoreInfoCard extends ConsumerWidget {
   final NGO ngo;
-  const MoreInfoCard({super.key, required this.ngo});
+  const NgoMoreInfoCard({super.key, required this.ngo});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -78,7 +79,7 @@ class MoreInfoCard extends ConsumerWidget {
                                 onPressed: () {
                                   Navigator.of(context).push(MaterialPageRoute(
                                       builder: (context) =>
-                                          MoreInfoCard(ngo: ngo)));
+                                          NgoMoreInfoCard(ngo: ngo)));
                                 },
                                 child: Text(
                                   "Contact Us",

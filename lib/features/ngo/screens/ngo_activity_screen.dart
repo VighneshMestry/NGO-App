@@ -5,8 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants/constants.dart';
 import '../../../models/ngo_model.dart';
 import '../../auth/controller/auth_controller.dart';
-import '../../widgets/custom_card.dart';
 import '../controller/ngo_controller.dart';
+import '../widgets/ngo_custom_card.dart';
 import 'add_ngo_screen.dart';
 import 'ngo_screen.dart';
 
@@ -142,7 +142,7 @@ class _NgoScreenState extends ConsumerState<NgoActivityScreen> {
                                 .contains(_searchController.text.toLowerCase())) {
                               return Padding(
                                 padding: const EdgeInsets.symmetric(horizontal : 8),
-                                child: CustomCard(ngo: ngo),
+                                child: NgoCustomCard(ngo: ngo),
                               );
                             }
                             return Container();
