@@ -122,9 +122,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                   context: context,
                                   builder: (BuildContext context) {
                                     return AlertDialog(
-                                      title: const Text('Basic dialog title'),
+                                      title: const Text('Warning'),
                                       content: const Text(
-                                          "You will be logging in as a civil user"),
+                                          "You will be logging in as a civil user", style: TextStyle(fontSize: 16)),
                                       actions: [
                                         TextButton(
                                           style: TextButton.styleFrom(
