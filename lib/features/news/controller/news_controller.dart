@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ngo_app/features/news/repository/news_repository.dart';
-import 'package:ngo_app/models/news_model.dart';
+
+import '../../../models/news_model.dart';
+import '../repository/news_repository.dart';
 
 final newsControllerProvider =
     StateNotifierProvider<NewsController, bool>((ref) {

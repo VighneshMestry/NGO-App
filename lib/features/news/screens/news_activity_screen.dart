@@ -1,12 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ngo_app/core/constants/constants.dart';
-import 'package:ngo_app/features/news/controller/news_controller.dart';
-import 'package:ngo_app/features/news/screens/add_news_screen.dart';
-import 'package:ngo_app/features/news/screens/news_screen.dart';
-import 'package:ngo_app/features/news/widgets/news_custom_card.dart';
-import 'package:ngo_app/models/news_model.dart';
+
+import '../../../core/constants/constants.dart';
+import '../../../models/news_model.dart';
+import '../controller/news_controller.dart';
+import '../widgets/news_custom_card.dart';
+import 'add_news_screen.dart';
+import 'news_screen.dart';
 
 class NewsActivityScreen extends ConsumerStatefulWidget {
   const NewsActivityScreen({super.key});

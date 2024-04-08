@@ -1,12 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ngo_app/core/constants/constants.dart';
-import 'package:ngo_app/features/events/controller/event_controller.dart';
-import 'package:ngo_app/features/events/screens/add_event_screen.dart';
-import 'package:ngo_app/features/events/screens/events_screen.dart';
-import 'package:ngo_app/features/events/widgets/event_custom_card.dart';
-import 'package:ngo_app/models/event_model.dart';
+
+import '../../../core/constants/constants.dart';
+import '../../../models/event_model.dart';
+import '../controller/event_controller.dart';
+import '../widgets/event_custom_card.dart';
+import 'add_event_screen.dart';
+import 'events_screen.dart';
 
 class EventActivityScreen extends ConsumerStatefulWidget {
   const EventActivityScreen({super.key});

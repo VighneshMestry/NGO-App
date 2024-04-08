@@ -3,14 +3,15 @@ import 'dart:io';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ngo_app/core/constants/constants.dart';
-import 'package:ngo_app/core/utilities/utils.dart';
-import 'package:ngo_app/features/events/controller/event_controller.dart';
-import 'package:ngo_app/features/ngo/controller/ngo_controller.dart';
-import 'package:ngo_app/features/widgets/custom_bottom_bar.dart';
-import 'package:ngo_app/features/widgets/custom_text_field.dart';
-import 'package:ngo_app/models/event_model.dart';
 import 'package:uuid/uuid.dart';
+
+import '../../../core/constants/constants.dart';
+import '../../../core/utilities/utils.dart';
+import '../../../models/event_model.dart';
+import '../../ngo/controller/ngo_controller.dart';
+import '../../widgets/custom_bottom_bar.dart';
+import '../../widgets/custom_text_field.dart';
+import '../controller/event_controller.dart';
 
 class AddEventScreen extends ConsumerStatefulWidget {
   const AddEventScreen({super.key});

@@ -3,15 +3,15 @@ import 'dart:io';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ngo_app/core/utilities/utils.dart';
-import 'package:ngo_app/features/news/controller/news_controller.dart';
-import 'package:ngo_app/features/widgets/custom_text_field.dart';
-import 'package:ngo_app/models/news_model.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../core/constants/constants.dart';
+import '../../../core/utilities/utils.dart';
+import '../../../models/news_model.dart';
 import '../../ngo/controller/ngo_controller.dart';
 import '../../widgets/custom_bottom_bar.dart';
+import '../../widgets/custom_text_field.dart';
+import '../controller/news_controller.dart';
 
 class AddNewsScreen extends ConsumerStatefulWidget {
   const AddNewsScreen({super.key});

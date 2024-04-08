@@ -1,9 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ngo_app/core/utilities/utils.dart';
 
-import 'package:ngo_app/models/news_model.dart';
+import '../../../core/utilities/utils.dart';
+import '../../../models/news_model.dart';
 
 class NewsMoreInfoCard extends ConsumerWidget {
   final NewsModel news;

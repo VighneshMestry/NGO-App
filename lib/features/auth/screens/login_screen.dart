@@ -36,10 +36,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // title: Image.asset(
-        //   "assets/logo.jpg",
-        //   height: 40,
-        // ),
         actions: [
           TextButton(
             onPressed: () {},
@@ -85,13 +81,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   ),
                 ),
               ),
-              // Padding(
-              //   padding: const EdgeInsets.all(8.0),
-              //   child: Image.asset(
-              //     "assets/logo.jpg",
-              //     height: 250,
-              //   ),
-              // ),
               SizedBox(height: MediaQuery.of(context).size.height / 4),
               Padding(
                 padding: const EdgeInsets.only(

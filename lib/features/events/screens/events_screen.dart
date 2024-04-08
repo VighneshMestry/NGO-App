@@ -1,8 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ngo_app/features/events/controller/event_controller.dart';
-import 'package:ngo_app/features/events/widgets/event_custom_card.dart';
+
+import '../controller/event_controller.dart';
+import '../widgets/event_custom_card.dart';
 
 class EventScreen extends ConsumerStatefulWidget {
   final String activity;

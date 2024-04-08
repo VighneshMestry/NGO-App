@@ -1,8 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ngo_app/features/news/controller/news_controller.dart';
-import 'package:ngo_app/features/news/widgets/news_custom_card.dart';
+
+import '../controller/news_controller.dart';
+import '../widgets/news_custom_card.dart';
 
 class NewsScreen extends ConsumerStatefulWidget {
   final String activity;

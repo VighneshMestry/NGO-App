@@ -1,9 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ngo_app/features/events/widgets/event_more_info_card.dart';
 
 import '../../../models/event_model.dart';
+import 'event_more_info_card.dart';
 
 class EventCustomCard extends ConsumerStatefulWidget {
   final Event event;

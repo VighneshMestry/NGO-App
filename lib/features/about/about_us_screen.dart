@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ngo_app/core/constants/constants.dart';
-import 'package:ngo_app/features/home/widgets/carousel.dart';
+
+import '../../core/constants/constants.dart';
+import '../home/widgets/carousel.dart';
 
 class AboutUsScreen extends ConsumerStatefulWidget {
   const AboutUsScreen({super.key});

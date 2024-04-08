@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ngo_app/features/events/repository/event_repository.dart';
-import 'package:ngo_app/models/event_model.dart';
+
+import '../../../models/event_model.dart';
+import '../repository/event_repository.dart';
 
 final eventControllerProvider = StateNotifierProvider<EventController, bool>(
   (ref) => EventController(
