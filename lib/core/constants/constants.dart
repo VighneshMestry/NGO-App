@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 
 class Constants {
-  static List<String> carouselImages = [
+  static const List<String> carouselImages = [
     "assets/prathaName.jpg",
     "assets/homeCarouselImages/ngoCarousel2.jpeg",
     "assets/homeCarouselImages/ngoCarousel1.jpg",
     "assets/homeCarouselImages/ngoCarousel.webp"
+  ];
+
+    static const List<String> carouselImagesAboutUs = [
+    "assets/homeCarouselImages/ngoCarousel2.jpeg",
+    "assets/homeCarouselImages/ngoCarousel1.jpg",
+    "assets/homeCarouselImages/ngoCarousel.webp",
+    "assets/prathaName.jpg",
   ];
 
     static List<String> carouselScreenImages = [

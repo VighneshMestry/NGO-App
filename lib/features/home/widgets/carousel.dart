@@ -1,11 +1,17 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/constants/constants.dart';
 
+// ignore: must_be_immutable
 class CarouselImages extends StatefulWidget {
-  const CarouselImages({super.key});
+  List<String> imagesList;
+  CarouselImages({
+    Key? key,
+    this.imagesList = Constants.carouselImages,
+  }) : super(key: key);
 
   @override
   State<CarouselImages> createState() => _CarouselImagesState();
@@ -18,7 +24,7 @@ class _CarouselImagesState extends State<CarouselImages> {
     return Column(
       children: [
         CarouselSlider(
-          items: Constants.carouselImages.map(
+          items: widget.imagesList.map(
             (e) {
               return Builder(
                 builder: (BuildContext context) => Padding(
@@ -50,8 +56,8 @@ class _CarouselImagesState extends State<CarouselImages> {
         ),
         DotsIndicator(
           decorator: DotsDecorator(
-            color: Colors.grey,
-            activeColor: Colors.blue,
+              color: Colors.grey,
+              activeColor: Colors.blue,
               activeSize: const Size(20, 9),
               activeShape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5.0))),

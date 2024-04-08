@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ngo_app/core/constants/constants.dart';
+import 'package:ngo_app/features/home/widgets/carousel.dart';
 
 class AboutUsScreen extends ConsumerStatefulWidget {
   const AboutUsScreen({super.key});
@@ -32,6 +34,8 @@ class _AboutUsScreenState extends ConsumerState<AboutUsScreen> {
                     textAlign: TextAlign.center,
                     style:
                         TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                const SizedBox(height: 10),
+                CarouselImages(imagesList: Constants.carouselImagesAboutUs),
                 const SizedBox(height: 10),
                 const Text(
                     "Pratha Samajik Sanstha is a dynamic NGO, formed by a group of professionals and social workers. It strives to deliver sustainable sanitation solutions by enhancing sanitation programmes and to motivate and help people residing in slums to create a clean, open-defecation free environment in their neighbourhood. It started its work in the year 2001 in Mumbai addressing the issue of sanitation by undertaking projects like Slum Sanitation Project supported by Municipal Corporation of Greater Mumbai. \n\nTo bring about change in the sanitation situation by developing the concerned model and system with active participation of concerned group/community to sustain the sanitation facility is the main objective of Pratha.\n",
