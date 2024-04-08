@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ngo_app/core/utilities/utils.dart';
 
 import 'package:ngo_app/models/news_model.dart';
 
@@ -79,9 +80,7 @@ class NewsMoreInfoCard extends ConsumerWidget {
                             const SizedBox(width: 3),
                             TextButton(
                                 onPressed: () {
-                                  // Navigator.of(context).push(MaterialPageRoute(
-                                  //     builder: (context) =>
-                                  //         MoreInfoCard(ngo: ngo)));
+                                  makePhoneCall(news.contactUs);
                                 },
                                 child: Text(
                                   "Contact Us",

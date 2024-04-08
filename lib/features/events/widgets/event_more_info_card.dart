@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ngo_app/core/utilities/utils.dart';
 
 import '../../../models/event_model.dart';
 
@@ -80,9 +81,7 @@ class EventMoreInfoCard extends ConsumerWidget {
                             const SizedBox(width: 3),
                             TextButton(
                                 onPressed: () {
-                                  // Navigator.of(context).push(MaterialPageRoute(
-                                  //     builder: (context) =>
-                                  //         EventMoreInfoCard(ngo: ngo)));
+                                  makePhoneCall(event.contactUs);
                                 },
                                 child: Text(
                                   "Contact Us",

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ngo_app/core/utilities/utils.dart';
 
 import '../../../models/ngo_model.dart';
 
@@ -77,9 +78,7 @@ class NgoMoreInfoCard extends ConsumerWidget {
                             const SizedBox(width: 3),
                             TextButton(
                                 onPressed: () {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) =>
-                                          NgoMoreInfoCard(ngo: ngo)));
+                                  makePhoneCall(ngo.contactUs);
                                 },
                                 child: Text(
                                   "Contact Us",
