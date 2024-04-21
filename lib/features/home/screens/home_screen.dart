@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ngo_app/features/home/screens/attendance_screen.dart';
+import '../../../models/attendance_model.dart';
 import '../../auth/controller/auth_controller.dart';
 import '../../auth/screens/login_screen.dart';
 import '../widgets/carousel.dart';
@@ -16,6 +18,23 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   void logOut() {
     ref.read(authControllerProvider.notifier).logOut();
     setState(() {});
+  }
+
+  void addAttendance(DateTime date) {
+    final user = ref.read(userProvider)!;
+    Attendance attendance =
+        Attendance(date: date, uid: user.uid, name: user.name);
+    ref
+        .read(authControllerProvider.notifier)
+        .addAttendance(context, attendance);
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    DateTime date = DateTime.now();
+    addAttendance(date);
   }
 
   @override
@@ -36,7 +55,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     )
                   : GestureDetector(
                       onTap: () {
-                        // Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CarouselScreen()));
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => const AttendanceScreen()));
                       },
                       child: Image.network(
                         user.profilePic,

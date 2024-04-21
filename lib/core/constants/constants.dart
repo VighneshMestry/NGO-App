@@ -46,6 +46,7 @@ class Constants {
     "Human Rights",
     "Labour & Employment",
     "Youth Affairs",
+    "Education",
   ];
 
   static const selectedNavBarColor = Colors.blue;

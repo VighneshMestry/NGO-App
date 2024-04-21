@@ -2,11 +2,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../models/attendance_model.dart';
 import '../../../models/user_model.dart';
 import '../../home/screens/carousel_screen.dart';
 import '../repository/auth_repository.dart';
 
 final userProvider = StateProvider<UserModel?>((ref) => null);
+
+final getAttendanceProvider = StreamProvider.family((ref, String uid) {
+  return ref.read(authControllerProvider.notifier).getAttendance(uid);
+});
 
 final authControllerProvider = StateNotifierProvider<AuthController, bool>(
   (ref) => AuthController(
@@ -49,5 +54,13 @@ class AuthController extends StateNotifier<bool> {
   void logOut() async {
     _authRepository.logOut();
     _ref.read(userProvider.notifier).update((state) => null);
+  }
+
+  void addAttendance(BuildContext context, Attendance attendance) async {
+    await _authRepository.addAttendance(context, attendance);
+  }
+
+    Stream<List<Attendance>> getAttendance(String uid) {
+    return _authRepository.getAttendance(uid);
   }
 }

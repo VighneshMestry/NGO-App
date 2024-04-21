@@ -17,7 +17,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   }
 
   void signIn(WidgetRef ref, bool isStaff) {
-    ref.read(authControllerProvider.notifier).signInWithGoogle(context, isStaff);
+    ref
+        .read(authControllerProvider.notifier)
+        .signInWithGoogle(context, isStaff);
     setState(() {});
   }
 
@@ -113,7 +115,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                     return AlertDialog(
                                       title: const Text('Warning'),
                                       content: const Text(
-                                          "You will be logging in as a civil user", style: TextStyle(fontSize: 16)),
+                                          "You will be logging in as a civil user",
+                                          style: TextStyle(fontSize: 16)),
                                       actions: [
                                         TextButton(
                                           style: TextButton.styleFrom(

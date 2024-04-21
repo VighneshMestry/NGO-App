@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants/constants.dart';
 import '../../../models/news_model.dart';
 import '../controller/news_controller.dart';
+import '../../auth/controller/auth_controller.dart';
 import '../widgets/news_custom_card.dart';
 import 'add_news_screen.dart';
 import 'news_screen.dart';
@@ -49,6 +50,7 @@ class _NewsScreenState extends ConsumerState<NewsActivityScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final user = ref.watch(userProvider)!;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -200,25 +202,27 @@ class _NewsScreenState extends ConsumerState<NewsActivityScreen> {
           ],
         ),
       ),
-      floatingActionButton: Container(
-        padding: const EdgeInsets.all(5.0),
-        height: 70,
-        width: 70,
-        child: FloatingActionButton(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-          backgroundColor: Colors.white,
-          onPressed: () {
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const AddNewsScreen()));
-          },
-          child: Icon(
-            Icons.add,
-            size: 32,
-            color: Colors.blue.shade800,
-          ),
-        ),
-      ),
+      floatingActionButton: !user.isStaff
+          ? const SizedBox()
+          : Container(
+              padding: const EdgeInsets.all(5.0),
+              height: 70,
+              width: 70,
+              child: FloatingActionButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30)),
+                backgroundColor: Colors.white,
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const AddNewsScreen()));
+                },
+                child: Icon(
+                  Icons.add,
+                  size: 32,
+                  color: Colors.blue.shade800,
+                ),
+              ),
+            ),
     );
   }
 }

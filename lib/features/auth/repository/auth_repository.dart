@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import '../../../models/attendance_model.dart';
 import '../../../models/user_model.dart';
 
 final authRepositoryProvider = Provider(
@@ -28,6 +30,8 @@ class AuthRepository {
 
   CollectionReference get _users => _firestore.collection("users");
 
+  CollectionReference get _attendance => _firestore.collection("attendance");
+
   Stream<User?> get authStateChange => _auth.authStateChanges();
 
   Future<UserModel> signInWithGoogle(bool isStaff) async {
@@ -49,11 +53,10 @@ class AuthRepository {
 
       if (userCredential.additionalUserInfo!.isNewUser) {
         _userModel = UserModel(
-          name: userCredential.user!.displayName ?? "No Name",
-          profilePic: userCredential.user!.photoURL!,
-          uid: userCredential.user!.uid,
-          isStaff: isStaff
-        );
+            name: userCredential.user!.displayName ?? "No Name",
+            profilePic: userCredential.user!.photoURL!,
+            uid: userCredential.user!.uid,
+            isStaff: isStaff);
         await FirebaseFirestore.instance
             .collection("users")
             .doc(userCredential.user!.uid)
@@ -77,5 +80,18 @@ class AuthRepository {
   Stream<UserModel> getUserData(String uid) {
     return _users.doc(uid).snapshots().map(
         (event) => UserModel.fromMap(event.data() as Map<String, dynamic>));
+  }
+
+  Future<void> addAttendance(
+      BuildContext context, Attendance attendance) async {
+    // await _attendance.doc().set(date);
+    await _attendance.add(attendance.toMap());
+  }
+
+  Stream<List<Attendance>> getAttendance(String uid) {
+    return _attendance.where("uid", isEqualTo: uid).snapshots().map((event) => event
+        .docs
+        .map((e) => Attendance.fromMap(e.data() as Map<String, dynamic>))
+        .toList());
   }
 }

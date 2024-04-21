@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/constants/constants.dart';
 import '../../../models/event_model.dart';
+import '../../auth/controller/auth_controller.dart';
 import '../controller/event_controller.dart';
 import '../widgets/event_custom_card.dart';
 import 'add_event_screen.dart';
@@ -17,7 +18,7 @@ class EventActivityScreen extends ConsumerStatefulWidget {
 }
 
 class _EventScreenState extends ConsumerState<EventActivityScreen> {
-    final TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
   bool isSearching = false;
   void isSearchingFunction() {
     if (_searchController.text.isNotEmpty) {
@@ -49,6 +50,7 @@ class _EventScreenState extends ConsumerState<EventActivityScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final user = ref.watch(userProvider)!;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -154,7 +156,8 @@ class _EventScreenState extends ConsumerState<EventActivityScreen> {
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => EventScreen(
-                                  activity: Constants.eventsCategories[index])));
+                                  activity:
+                                      Constants.eventsCategories[index])));
                         },
                         child: Container(
                           margin: const EdgeInsets.symmetric(horizontal: 10),
@@ -192,7 +195,9 @@ class _EventScreenState extends ConsumerState<EventActivityScreen> {
           ],
         ),
       ),
-      floatingActionButton: Container(
+      floatingActionButton: !user.isStaff
+          ? const SizedBox()
+          : Container(
               padding: const EdgeInsets.all(5.0),
               height: 70,
               width: 70,
