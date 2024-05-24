@@ -15,6 +15,10 @@ class _AttendanceScreenState extends ConsumerState<AttendanceScreen> {
   Widget build(BuildContext context) {
     final user = ref.watch(userProvider)!.uid;
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Staff Attendance"),
+        centerTitle: true,
+      ),
         body: ref.watch(getAttendanceProvider(user)).when(
             data: (data) {
               return ListView.builder(
